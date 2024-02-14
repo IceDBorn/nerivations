@@ -1,7 +1,6 @@
 {
   nixpkgs.overlays = [
     (final: super:
-
       let c = p: final.callPackage p { };
       in {
         firefox-cascade = c ../pkgs/firefox-cascade.nix;
