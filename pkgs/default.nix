@@ -7,8 +7,8 @@
         firefox-gnome-theme = c ../pkgs/firefox-gnome-theme.nix;
         hyprfreeze = c ../pkgs/hyprfreeze.nix;
         nvchad = c ../pkgs/nvchad.nix;
-        proton-ge = c ../pkgs/proton-ge.nix;
         tpm = c ../pkgs/tpm.nix;
+        wine-ge = c ../pkgs/wine-ge.nix;
       })
   ];
 }
