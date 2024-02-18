@@ -1,20 +1,23 @@
 { config, ... }:
 
-{
+let userjs = config.nerivations.arkenfox-userjs.userjs;
+in {
   nixpkgs.overlays = [
     (final: super:
       let
         c = p: final.callPackage p { };
         k = p: config.boot.kernelPackages.callPackage p { };
       in {
-        deckbd = c ../pkgs/deckbd.nix;
-        firefox-cascade = c ../pkgs/firefox-cascade.nix;
-        firefox-gnome-theme = c ../pkgs/firefox-gnome-theme.nix;
-        hyprfreeze = c ../pkgs/hyprfreeze.nix;
-        nvchad = c ../pkgs/nvchad.nix;
-        tpm = c ../pkgs/tpm.nix;
-        wine-ge = c ../pkgs/wine-ge.nix;
-        xpadneo-git = k ../pkgs/xpadneo.nix;
+        arkenfox-userjs =
+          final.callPackage ./arkenfox-userjs.nix { inherit userjs; };
+        deckbd = c ./deckbd.nix;
+        firefox-cascade = c ./firefox-cascade.nix;
+        firefox-gnome-theme = c ./firefox-gnome-theme.nix;
+        hyprfreeze = c ./hyprfreeze.nix;
+        nvchad = c ./nvchad.nix;
+        tpm = c ./tpm.nix;
+        wine-ge = c ./wine-ge.nix;
+        xpadneo-git = k ./xpadneo.nix;
       })
   ];
 }

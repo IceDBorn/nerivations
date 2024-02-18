@@ -1,1 +1,1 @@
-{ imports = [ ../overlays ../pkgs ]; }
+{ imports = [ ../overlays ../pkgs ./options.nix ]; }
