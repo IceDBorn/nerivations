@@ -1,7 +1,11 @@
+{ config, ... }:
+
 {
   nixpkgs.overlays = [
     (final: super:
-      let c = p: final.callPackage p { };
+      let
+        c = p: final.callPackage p { };
+        k = p: config.boot.kernelPackages.callPackage p { };
       in {
         deckbd = c ../pkgs/deckbd.nix;
         firefox-cascade = c ../pkgs/firefox-cascade.nix;
@@ -10,6 +14,7 @@
         nvchad = c ../pkgs/nvchad.nix;
         tpm = c ../pkgs/tpm.nix;
         wine-ge = c ../pkgs/wine-ge.nix;
+        xpadneo-git = k ../pkgs/xpadneo.nix;
       })
   ];
 }
