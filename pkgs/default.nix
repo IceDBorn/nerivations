@@ -1,6 +1,8 @@
 { config, ... }:
 
-let userjs = config.nerivations.arkenfox-userjs.userjs;
+let
+  extras = config.nerivations.adwaita-for-steam.extras;
+  userjs = config.nerivations.arkenfox-userjs.userjs;
 in {
   nixpkgs.overlays = [
     (final: super:
@@ -8,6 +10,8 @@ in {
         c = p: final.callPackage p { };
         k = p: config.boot.kernelPackages.callPackage p { };
       in {
+        adwaita-for-steam =
+          final.callPackage ./adwaita-for-steam { inherit extras; };
         arkenfox-userjs =
           final.callPackage ./arkenfox-userjs.nix { inherit userjs; };
         deckbd = c ./deckbd.nix;
