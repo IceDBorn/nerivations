@@ -3,13 +3,11 @@ final: super: {
     src = super.fetchFromGitHub {
       owner = "rpcs3";
       repo = "rpcs3";
-      rev = "7abc5f3eadcfc9b3875910efe124942ebac0c4ea";
-      hash = "sha256-4fSq7fxjadbIhAceQdKgA+CBM1qptC5ImeaBycYGFL8=";
+      rev = "adc8a360ad45b8462917f404db1b0afa85901a12";
+      hash = "sha256-UKilGyyaDeIN6raJHT4p0niwnnvnPaXpBpmWwcpTQ0k=";
       fetchSubmodules = true;
     };
 
-    version = "0.0.30-16122";
-
-    buildInputs = superAttrs.buildInputs ++ [ super.qt6.qtwayland ];
+    version = "0.0.31-16181";
   });
 }
