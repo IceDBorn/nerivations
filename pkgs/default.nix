@@ -14,6 +14,7 @@ in {
           final.callPackage ./adwaita-for-steam { inherit extras; };
         arkenfox-userjs =
           final.callPackage ./arkenfox-userjs.nix { inherit userjs; };
+        cliphist-rofi-img = c ./cliphist-rofi-img.nix;
         deckbd = c ./deckbd.nix;
         firefox-cascade = c ./firefox-cascade.nix;
         firefox-gnome-theme = c ./firefox-gnome-theme.nix;
