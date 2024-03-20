@@ -21,7 +21,6 @@ in {
         hyprfreeze = c ./hyprfreeze.nix;
         nvchad = c ./nvchad.nix;
         tpm = c ./tpm.nix;
-        v4l2loopback-git = k ./v4l2loopback.nix; # Until next version bump
         wine-ge = c ./wine-ge.nix;
         xpadneo-git = k ./xpadneo.nix;
       })
