@@ -1,7 +1,6 @@
-{ stdenvNoCC, fetchFromGitHub, userjs, ... }:
+{ stdenvNoCC, fetchFromGitHub, ... }:
 
-let userjsFile = builtins.toFile "user.js" userjs;
-in stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation rec {
   name = "arkenfox-userjs";
   version = "122.0";
 
@@ -15,7 +14,6 @@ in stdenvNoCC.mkDerivation rec {
   preferLocalBuild = true;
 
   installPhase = ''
-    cat ${userjsFile} >> user.js
     mkdir -p $out
     cp ./user.js $out/user.js
   '';
