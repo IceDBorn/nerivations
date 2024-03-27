@@ -22,7 +22,6 @@ in {
         nvchad = c ./nvchad.nix;
         tpm = c ./tpm.nix;
         wine-ge = c ./wine-ge.nix;
-        xpadneo-git = k ./xpadneo.nix;
       })
   ];
 }
