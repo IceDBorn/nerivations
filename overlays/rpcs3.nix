@@ -3,11 +3,11 @@ final: super: {
     src = super.fetchFromGitHub {
       owner = "rpcs3";
       repo = "rpcs3";
-      rev = "adc8a360ad45b8462917f404db1b0afa85901a12";
-      hash = "sha256-UKilGyyaDeIN6raJHT4p0niwnnvnPaXpBpmWwcpTQ0k=";
+      rev = "4ecf8ecd06c15f0557e1d9243f31e4c2d7baebe2";
+      hash = "sha256-y7XLYo1qYYiNE4TXVxfUTCmyGkthpj3IU1gdKTgb8KY=";
       fetchSubmodules = true;
     };
 
-    version = "0.0.31-16181";
+    version = "0.0.31-16271";
   });
 }
