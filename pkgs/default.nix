@@ -17,7 +17,6 @@ in
         deckbd = c ./deckbd.nix;
         hyprfreeze = c ./hyprfreeze.nix;
         nvchad = c ./nvchad.nix;
-        sunshine-git = c ./sunshine;
         tpm = c ./tpm.nix;
         wine-ge = c ./wine-ge.nix;
       }
