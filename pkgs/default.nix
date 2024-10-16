@@ -13,7 +13,6 @@
         hyprfreeze = c ./hyprfreeze.nix;
         nvchad = c ./nvchad.nix;
         tpm = c ./tpm.nix;
-        wine-ge = c ./wine-ge.nix;
       }
     )
   ];
