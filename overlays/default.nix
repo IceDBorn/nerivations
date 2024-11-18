@@ -5,6 +5,6 @@ let
 in
 {
   nixpkgs.overlays = lib.mkIf cfg.enable [
-    (import ./walker.nix) # Until version 0.8.10 is in nixpkgs
+    (import ./walker.nix) # https://nixpk.gs/pr-tracker.html?pr=355093
   ];
 }
