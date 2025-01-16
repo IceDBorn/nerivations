@@ -1,6 +1,6 @@
-{ stdenv, fetchFromGitHub }:
+{ stdenvNoCC, fetchFromGitHub }:
 
-stdenv.mkDerivation rec {
+stdenvNoCC.mkDerivation rec {
   name = "hyprfreeze";
   version = "1.1.1";
 
