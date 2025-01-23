@@ -9,6 +9,7 @@
       in
       {
         deckbd = c ./deckbd.nix;
+        hyproled = c ./hyproled.nix;
         tpm = c ./tpm.nix;
       }
     )
