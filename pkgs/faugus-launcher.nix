@@ -1,5 +1,4 @@
 {
-  bash,
   fetchFromGitHub,
   gamemode,
   gobject-introspection,
@@ -8,6 +7,8 @@
   lib,
   libayatana-appindicator,
   libcanberra-gtk3,
+  meson,
+  ninja,
   python3Packages,
   umu-launcher,
   wrapGAppsHook3,
@@ -16,14 +17,14 @@
 
 python3Packages.buildPythonApplication rec {
   pname = "faugus-launcher";
-  version = "1.5.8";
-  pyproject = true;
+  version = "1.6.1";
+  pyproject = false;
 
   src = fetchFromGitHub {
     owner = "Faugus";
     repo = "faugus-launcher";
     tag = version;
-    hash = "sha256-NktdSkoS0ceHva/Q5VGzA1FFZN4KKitvV9IPVybBy44=";
+    hash = "sha256-Z3Xg9FfDoJPzztm8aOHL3XKIsQCe3xDKEHhrZs+jme8=";
   };
 
   nativeBuildInputs = [
@@ -35,17 +36,16 @@ python3Packages.buildPythonApplication rec {
     libayatana-appindicator
   ];
 
-  build-system = with python3Packages; [
-    meson-python
+  build-system = [
+    meson
+    ninja
   ];
 
   dependencies = with python3Packages; [
-    evdev
     filelock
     pillow
     psutil
     pygobject3
-    pynput
     requests
     vdf
   ];
@@ -55,12 +55,11 @@ python3Packages.buildPythonApplication rec {
       --replace-fail "PathManager.find_binary('faugus-run')" "'$out/bin/.faugus-run-wrapped'" \
       --replace-fail "PathManager.find_binary('faugus-proton-manager')" "'$out/bin/.faugus-proton-manager-wrapped'" \
       --replace-fail 'Exec={faugus_run}' 'Exec=faugus-run'
+
     substituteInPlace faugus_run.py \
       --replace-fail "PathManager.find_binary('faugus-components')" "'$out/bin/.faugus-components-wrapped'" \
       --replace-fail "PathManager.find_library('libgamemode.so.0')" "'${lib.getLib gamemode}/lib/libgamemode.so.0'" \
       --replace-fail "PathManager.find_library('libgamemodeauto.so.0')" "'${lib.getLib gamemode}/lib/libgamemodeauto.so.0'"
-    substituteInPlace faugus-session \
-      --replace-fail '/bin/bash' "${lib.getExe bash}"
   '';
 
   dontWrapGApps = true;
@@ -68,7 +67,7 @@ python3Packages.buildPythonApplication rec {
   preFixup = ''
     makeWrapperArgs+=(
       "''${gappsWrapperArgs[@]}"
-      --prefix PATH : "${
+      --suffix PATH : "${
         lib.makeBinPath [
           icoextract
           imagemagick
