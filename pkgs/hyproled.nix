@@ -1,4 +1,8 @@
-{ stdenvNoCC, fetchFromGitHub }:
+{
+  fetchFromGitHub,
+  stdenvNoCC,
+}:
+
 stdenvNoCC.mkDerivation rec {
   name = "hyproled";
   version = "0.1.0";
