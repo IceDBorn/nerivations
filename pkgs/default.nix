@@ -13,6 +13,7 @@
         hyprfreeze = c ./hyprfreeze.nix;
         hyproled = c ./hyproled.nix;
         scopebuddy = c ./scopebuddy.nix;
+        sysauth = c ./sysauth.nix;
       }
     )
   ];
