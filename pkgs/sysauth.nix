@@ -1,14 +1,14 @@
 let
-  _commit = "cbe61bded419b06caa9d251528574d48dfaa261e";
-  _sha256 = "Jj7neO1RKhvinOp9TYAT+Vz4d76GJaB9LTWvuEuqJBw=";
-  _bgColor = "@theme_bg_color";
-  _bgTransparency = 1.0;
+  __rev = "cbe61bded419b06caa9d251528574d48dfaa261e";
+  __sha256 = "Jj7neO1RKhvinOp9TYAT+Vz4d76GJaB9LTWvuEuqJBw=";
+  __bgColor = "@theme_bg_color";
+  __bgTransparency = 1.0;
 in
 {
-  commit ? _commit,
-  sha256 ? _sha256,
-  bgColor ? _bgColor,
-  bgTransparency ? _bgTransparency,
+  _rev ? __rev,
+  _sha256 ? __sha256,
+  _bgColor ? __bgColor,
+  _bgTransparency ? __bgTransparency,
 
   stdenv,
   fetchFromGitHub,
@@ -24,13 +24,13 @@ in
 }:
 stdenv.mkDerivation rec {
   pname = "sysauth";
-  version = "0.0.0-${commit}";
+  version = "0.0.0-${_rev}";
 
   src = fetchFromGitHub {
     owner = "System64fumo";
     repo = pname;
-    rev = commit;
-    inherit sha256;
+    rev = _rev;
+    sha256 = _sha256;
   };
 
   _style = builtins.toFile "sysauth-styles.css" ''
@@ -39,7 +39,7 @@ stdenv.mkDerivation rec {
     }
 
     #sysauth .box_layout {
-      background: alpha(${bgColor}, ${toString bgTransparency});
+      background: alpha(${_bgColor}, ${toString _bgTransparency});
       box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
     }
   '';
